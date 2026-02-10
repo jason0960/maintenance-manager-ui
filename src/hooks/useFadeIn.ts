@@ -1,0 +1,28 @@
+import { useEffect, useRef, useState, type RefObject } from 'react';
+
+export default function useFadeIn<T extends HTMLElement = HTMLDivElement>(
+  threshold = 0.1
+): [RefObject<T | null>, boolean] {
+  const ref = useRef<T | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, isVisible];
+}
