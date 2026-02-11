@@ -16,8 +16,8 @@ export default function Footer() {
                 S&E
               </div>
               <div>
-                <span className="text-lg font-bold text-white">S and E</span>
-                <span className="text-lg font-bold text-brand-400"> Reality</span>
+                <span className="text-lg font-bold text-white">S & E</span>
+                <span className="text-lg font-bold text-brand-400"> Realty</span>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-gray-400">
