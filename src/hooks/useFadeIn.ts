@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, type RefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function useFadeIn<T extends HTMLElement = HTMLDivElement>(
   threshold = 0.1
-): [RefObject<T | null>, boolean] {
-  const ref = useRef<T | null>(null);
+): [React.RefObject<T>, boolean] {
+  const ref = useRef<T>(null) as React.RefObject<T>;
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
